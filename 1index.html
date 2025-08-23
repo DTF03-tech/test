@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lagerflow – Privat</title>
+  <link rel="icon" href="/Lagerflow.log" type="image/svg+xml" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- SVG-symboler til ikon/monogram -->
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;left:-9999px;top:-9999px">
+    <!-- Lager/garage ikon -->
+    <symbol id="icon-warehouse" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M3 9.5L12 4l9 5.5v9A1.5 1.5 0 0 1 19.5 20h-15A1.5 1.5 0 0 1 3 18.5v-9zm2 .4v8.6h14v-8.6L12 6.3 5 9.9z"/>
+      <path fill="currentColor" d="M7 18v-6h10v6H7zm2-2h6v-2H9v2z"/>
+    </symbol>
+    <!-- LF monogram (kan bruges senere) -->
+    <symbol id="icon-lf" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M4 4h10v2H6v12h5v2H4z"/>
+      <path fill="currentColor" d="M12 8h8v2h-6v3h5v2h-5v3h-2z"/>
+    </symbol>
+  </svg>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-icon">
+        <svg viewBox="0 0 24 24" class="icon"><use href="#icon-warehouse"/></svg>
+      </span>
+      <span class="brand-text">
+        <strong>Lagerflow</strong>
+        <small>Lagerstyring</small>
+      </span>
+    </a>
+    <nav class="actions">
+      <a class="btn btn-ghost" href="#login">Log ind</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-icon">
+        <svg viewBox="0 0 24 24" class="icon-hero"><use href="#icon-warehouse"/></svg>
+      </div>
+
+      <h1 class="hero-title">
+        Professionel <span class="accent">Lagerstyring</span>
+      </h1>
+
+      <p class="hero-sub">
+        Mobil-først løsning til moderne virksomheder. Få komplet overblik over dit lager
+        med realtids sporing og avanceret brugeradgang.
+      </p>
+
+      <a href="#login" class="btn btn-primary">Kom i gang</a>
+      <p class="hero-note">Kun adgang via invitation • Sikker og privat</p>
+    </div>
+  </section>
+
+  <!-- Login panel (fra din tidligere side) -->
+  <main class="container">
+    <section id="login" class="card">
+      <h2>Log ind</h2>
+      <p class="muted">Privat adgang – brug din konto.</p>
+      <form id="loginForm" class="stack">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Adgangskode" required />
+        <button class="btn">Log ind</button>
+        <p id="loginMsg" class="msg"></p>
+      </form>
+    </section>
+
+    <!-- Privat app panel (vises efter login af dit app.js) -->
+    <section id="appPanel" class="card hidden">
+      <h2>Velkommen</h2>
+      <p class="muted">Du er logget ind. Udvid siden med dine paneler.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Send en mail</h3>
+          <form id="mailForm" class="stack">
+            <input type="email" id="mailTo" placeholder="Til (valgfri)" />
+            <input type="text" id="mailSubject" placeholder="Emne" />
+            <textarea id="mailMessage" rows="5" placeholder="Besked"></textarea>
+            <button class="btn">Send</button>
+            <p id="mailMsg" class="msg"></p>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Privat indhold</h3>
+          <ul class="list">
+            <li>Kun synligt efter login</li>
+            <li>Byg videre med katalog, lager, osv.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Lagerflow</footer>
+  <script src="/app.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
