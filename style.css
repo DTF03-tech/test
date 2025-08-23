@@ -87,3 +87,27 @@ input:focus,textarea:focus{ outline:2px solid var(--accent); border-color:transp
 .btn:active,
 .actions a {
   text-decoration: none !important;}
+
+  /* CTA: centrér og gør det pænt */
+section.container[aria-labelledby="cta-title"] .card {
+    max-width: 750px; 
+    margin: 0 auto;
+    text-align: center;}
+
+/* Knaprækken */
+section.container[aria-labelledby="cta-title"] .card > div {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;}
+
+/* Ens knapper uden understregning */
+section.container[aria-labelledby="cta-title"] .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  height: 44px;
+  text-decoration: none;
+  border-bottom: 1;}
