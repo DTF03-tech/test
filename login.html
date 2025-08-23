@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log ind – Lagerflow</title>
+  <link rel="icon" href="lagerflow.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page-specific touches to ensure perfect centering */
+    .auth-wrap { min-height: calc(100dvh - 72px); display: grid; place-items: center; padding: 24px; }
+    .auth-card { width: 100%; max-width: 440px; margin: 0 auto; }
+    .input { width: 100%; height: 44px; border-radius: 10px; padding: 0 12px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); color: inherit; }
+    .input::placeholder { color: rgba(255,255,255,.6); }
+    .row { display: grid; gap: 12px; }
+    .row-2 { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+    .muted { opacity: .75; }
+    .pw-wrap { position: relative; }
+    .pw-toggle { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: 0; color: inherit; opacity: .8; cursor: pointer; }
+    .helper { display:flex; justify-content: space-between; align-items:center; gap:12px; }
+    .helper a { text-decoration: none; border: 0; }
+    .brand-back { text-decoration:none; border:0; }
+  </style>
+</head>
+<body>
+  <!-- Simple icon sprite -->
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;left:-9999px;top:-9999px">
+    <symbol id="icon-warehouse" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M3 9.5L12 4l9 5.5v9A1.5 1.5 0 0 1 19.5 20h-15A1.5 1.5 0 0 1 3 18.5v-9zm2 .4v8.6h14v-8.6L12 6.3 5 9.9z"/>
+      <path fill="currentColor" d="M7 18v-6h10v6H7zm2-2h6v-2H9v2z"/>
+    </symbol>
+  </svg>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a class="brand brand-back" href="/">
+      <span class="brand-icon">
+        <svg viewBox="0 0 24 24" class="icon"><use href="#icon-warehouse"/></svg>
+      </span>
+      <span class="brand-text">
+        <strong>Lagerflow</strong>
+        <small>Log ind</small>
+      </span>
+    </a>
+  </header>
+
+  <!-- Auth -->
+  <main class="container auth-wrap">
+    <section class="card auth-card">
+      <header style="text-align:center; margin-bottom: 10px;">
+        <h1 style="margin:0;">Log ind</h1>
+        <p class="muted" style="margin:6px 0 0;">Privat adgang – kun via invitation</p>
+      </header>
+
+      <form class="row" onsubmit="event.preventDefault(); demoLogin();">
+        <label>
+          <span class="muted" style="display:block; margin:0 0 6px;">Email</span>
+          <input class="input" type="email" name="email" autocomplete="email" placeholder="din@mail.dk" required />
+        </label>
+
+        <label class="pw-wrap">
+          <span class="muted" style="display:block; margin:0 0 6px;">Adgangskode</span>
+          <input class="input" id="pw" type="password" name="password" autocomplete="current-password" placeholder="••••••••" required />
+          <button type="button" class="pw-toggle" aria-label="Vis/skjul adgangskode" onclick="togglePw()">Vis</button>
+        </label>
+
+        <div class="helper">
+          <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+            <input type="checkbox" name="remember" /> <span class="muted">Husk mig</span>
+          </label>
+          <a href="#" class="muted">Glemt adgangskode?</a>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Log ind</button>
+        <a class="btn btn-ghost" href="mailto:admin@lagerflow.org">Kontakt admin</a>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> Lagerflow</footer>
+
+  <script>
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+    function togglePw() {
+      const inp = document.getElementById('pw');
+      const btn = document.querySelector('.pw-toggle');
+      if (!inp || !btn) return;
+      const isPw = inp.type === 'password';
+      inp.type = isPw ? 'text' : 'password';
+      btn.textContent = isPw ? 'Skjul' : 'Vis';
+    }
+
+    function demoLogin() {
+      // Placeholder – udskift med rigtig auth senere
+      alert('Login-handling sættes op senere (Supabase / backend).');
+    }
+  </script>
+</body>
+</html>
