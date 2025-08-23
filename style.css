@@ -59,3 +59,31 @@ input:focus,textarea:focus{ outline:2px solid var(--accent); border-color:transp
 
 .footer{ text-align:center; color:var(--muted); margin:32px 0; }
 .hidden{ display:none !important; }
+
+#features .hero-sub {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;}
+
+/* --- Features: centrér og gør layoutet pænere --- */
+#features .hero-title,
+#features .hero-sub {
+  text-align: center;}
+
+  #features .card {
+  height: 100%;
+  border-radius: 16px;}
+  
+  html { scroll-behavior: smooth;}
+
+  .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(6px);}
+
+  /* Fjern streger under "Log ind" og "Kontakt administrator" */
+.btn,
+.btn:link,
+.btn:visited,
+.btn:hover,
+.btn:focus,
+.btn:active,
+.actions a {
+  text-decoration: none !important;}
