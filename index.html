@@ -1,30 +1,38 @@
 <!doctype html>
 <html lang="da">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lagerflow – Privat</title>
-  <link rel="icon" href="lagerflow.svg">
+  <title>Lagerflow – Professionel lagerstyring</title>
+  <link rel="icon" href="lagerflow.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- SVG-symboler til ikon/monogram -->
+  <!-- SVG symboler (sprite) -->
   <svg aria-hidden="true" width="0" height="0" style="position:absolute;left:-9999px;top:-9999px">
-    <!-- Lager/garage ikon -->
     <symbol id="icon-warehouse" viewBox="0 0 24 24">
       <path fill="currentColor" d="M3 9.5L12 4l9 5.5v9A1.5 1.5 0 0 1 19.5 20h-15A1.5 1.5 0 0 1 3 18.5v-9zm2 .4v8.6h14v-8.6L12 6.3 5 9.9z"/>
       <path fill="currentColor" d="M7 18v-6h10v6H7zm2-2h6v-2H9v2z"/>
     </symbol>
-    <!-- LF monogram (kan bruges senere) -->
-    <symbol id="icon-lf" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M4 4h10v2H6v12h5v2H4z"/>
-      <path fill="currentColor" d="M12 8h8v2h-6v3h5v2h-5v3h-2z"/>
+    <symbol id="icon-box" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M21 8.5v7l-9 4-9-4v-7l9-4 9 4zm-9 1.7L6.2 7.6 4.7 8.2 12 11.5l7.3-3.3-1.5-.6L12 10.2z"/>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm8 3a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+      <path fill="currentColor" d="M2 20v-1a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v1H2zm12 0v-1c0-1.1.3-2.1.9-3a6 6 0 0 1 5.1-2.6h.1a4.9 4.9 0 0 1 1.9.4V20H14z"/>
+    </symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M4 19V5h2v14H4zm7 0V9h2v10h-2zm7 0v-8h2v8h-2z"/>
+    </symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 3l8 3v6c0 4.4-3 8.6-8 10-5-1.4-8-5.6-8-10V6l8-3z"/>
+      <path fill="#0b1020" d="M11 15l5-5-1.4-1.4L11 12.2 9.4 10.6 8 12z"/>
     </symbol>
   </svg>
 
   <!-- Topbar -->
   <header class="topbar">
-    <a class="brand" href="/">
+    <a class="brand" href="#top">
       <span class="brand-icon">
         <svg viewBox="0 0 24 24" class="icon"><use href="#icon-warehouse"/></svg>
       </span>
@@ -34,79 +42,100 @@
       </span>
     </a>
     <nav class="actions">
-      <a class="btn btn-ghost" href="#login">Log ind</a>
+      <a class="btn btn-primary" href="#login">Log ind</a>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="top">
     <div class="hero-inner">
       <div class="hero-icon">
         <svg viewBox="0 0 24 24" class="icon-hero"><use href="#icon-warehouse"/></svg>
       </div>
-
-      <h1 class="hero-title">
-        Professionel <span class="accent">Lagerstyring</span>
-      </h1>
-
+      <h1 class="hero-title">Professionel <span class="accent">Lagerstyring</span></h1>
       <p class="hero-sub">
-        Mobil-først løsning til moderne virksomheder. Få komplet overblik over dit lager
-        med realtids sporing og avanceret brugeradgang.
+        Lagerflow er en mobil-først lagerstyringsløsning designet til moderne virksomheder.
+        Få komplet kontrol over dit lager med realtids sporing og avanceret brugerstyring.
       </p>
-
-      <a href="#login" class="btn btn-primary">Kom i gang</a>
+      <a href="#features" class="btn btn-primary">Kom i gang</a>
       <p class="hero-note">Kun adgang via invitation • Sikker og privat</p>
     </div>
   </section>
 
-  <!-- Login panel (fra din tidligere side) -->
-  <main class="container">
-    <section id="login" class="card">
-      <h2>Log ind</h2>
-      <p class="muted">Privat adgang – brug din konto.</p>
-      <form id="loginForm" class="stack">
-        <input type="email" id="email" placeholder="Email" required />
-        <input type="password" id="password" placeholder="Adgangskode" required />
-        <button class="btn">Log ind</button>
-        <p id="loginMsg" class="msg"></p>
-      </form>
-    </section>
+  <!-- Features -->
+  <section class="container" id="features" aria-labelledby="features-title">
+    <h2 id="features-title" class="hero-title" style="font-size: 32px; margin-bottom: 8px;">
+      Alt du behøver til moderne lagerstyring
+    </h2>
+    <p class="hero-sub" style="margin-top:0">
+      Fra stregkodescanning til detaljerede rapporter – Lagerflow giver dig alle værktøjerne til effektiv lagerstyring.
+    </p>
 
-    <!-- Privat app panel (vises efter login af dit app.js) -->
-    <section id="appPanel" class="card hidden">
-      <h2>Velkommen</h2>
-      <p class="muted">Du er logget ind. Udvid siden med dine paneler.</p>
-
-      <div class="grid">
-        <div class="card">
-          <h3>Send en mail</h3>
-          <form id="mailForm" class="stack">
-            <input type="email" id="mailTo" placeholder="Til (valgfri)" />
-            <input type="text" id="mailSubject" placeholder="Emne" />
-            <textarea id="mailMessage" rows="5" placeholder="Besked"></textarea>
-            <button class="btn">Send</button>
-            <p id="mailMsg" class="msg"></p>
-          </form>
+    <div class="grid" style="margin-top: 22px;">
+      <article class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <span class="brand-icon" style="width:40px;height:40px;border-radius:12px;">
+            <svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;color:#fff">
+              <use href="#icon-box"/>
+            </svg>
+          </span>
+          <h3 style="margin:0">Lagerstyring</h3>
         </div>
+        <p class="muted">Komplet overblik over alle varer med realtids beholdninger og automatisk lagersporing.</p>
+      </article>
 
-        <div class="card">
-          <h3>Privat indhold</h3>
-          <ul class="list">
-            <li>Kun synligt efter login</li>
-            <li>Byg videre med katalog, lager, osv.</li>
-          </ul>
+      <article class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <span class="brand-icon" style="width:40px;height:40px;border-radius:12px;">
+            <svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;color:#fff">
+              <use href="#icon-users"/>
+            </svg>
+          </span>
+          <h3 style="margin:0">Brugerstyring</h3>
         </div>
+        <p class="muted">Rollbaseret adgang med Master, Admin og Bruger roller for sikker og struktureret adgang.</p>
+      </article>
+
+      <article class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <span class="brand-icon" style="width:40px;height:40px;border-radius:12px;">
+            <svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;color:#fff">
+              <use href="#icon-chart"/>
+            </svg>
+          </span>
+          <h3 style="margin:0">Rapporter & Analyse</h3>
+        </div>
+        <p class="muted">Detaljerede rapporter og revisionslog med mulighed for eksport til Excel og CSV.</p>
+      </article>
+
+      <article class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <span class="brand-icon" style="width:40px;height:40px;border-radius:12px;">
+            <svg viewBox="0 0 24 24" class="icon" style="width:22px;height:22px;color:#fff">
+              <use href="#icon-shield"/>
+            </svg>
+          </span>
+          <h3 style="margin:0">Sikkerhed</h3>
+        </div>
+        <p class="muted">Kun adgang via invitation med fuld auditlog af alle handlinger og ændringer.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container" aria-labelledby="cta-title">
+    <div class="card" style="text-align:center;padding:28px">
+      <h2 id="cta-title" class="hero-title" style="font-size:28px;margin:0 0 10px;">
+        Klar til at optimere dit lager?
+      </h2>
+      <p class="hero-sub" style="margin:0 0 16px;">Kontakt din administrator for at få adgang til systemet, eller log ind hvis du allerede har en konto.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#login">Log ind</a>
+        <a class="btn btn-ghost" href="mailto:admin@lagerflow.org">Kontakt admin</a>
       </div>
-    </section>
-  </main>
-
+    </div>
+  </section>
   <footer class="footer">© <span id="year"></span> Lagerflow</footer>
-  <script src="/app.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
-
-
-
-
